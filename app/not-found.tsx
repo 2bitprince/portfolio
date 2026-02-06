@@ -8,12 +8,10 @@ export default function NotFound() {
     <div className="min-h-[calc(100vh-64px)] flex items-center justify-center p-4 page-gradient">
       <div className="w-full max-w-lg">
         <div className="relative bg-white/70 backdrop-blur-xl border border-white/50 rounded-3xl p-8 md:p-12 text-center shadow-xl overflow-hidden">
-          {/* Decorative background elements */}
           <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-black via-black to-black" />
           <div className="absolute -top-24 -right-24 w-48 h-48 bg-black rounded-full blur-3xl opacity-50" />
           <div className="absolute -bottom-24 -left-24 w-48 h-48 bg-black rounded-full blur-3xl opacity-50" />
 
-          {/* Content */}
           <div className="relative z-10">
             <h1 className="text-9xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-black to-black mb-4 header-font">
               404
@@ -23,7 +21,7 @@ export default function NotFound() {
             </h2>
             <p className="text-gray-600 mb-8 body-font text-lg">
               Oops! The page you are looking for has vanished into thin air. It
-              looks like you've ventured into uncharted territory.
+              looks like you have ventured into uncharted territory.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

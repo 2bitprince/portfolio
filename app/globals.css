@@ -40,7 +40,7 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: "SN Pro", sans-serif !important;
+  font-family: var(--font-inter), sans-serif;
 }
 
 h1,
@@ -49,15 +49,15 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Bricolage Grotesque", sans-serif;
+  font-family: var(--font-bricolage), sans-serif;
 }
 
 .header-font {
-  font-family: "Bricolage Grotesque", sans-serif;
+  font-family: var(--font-bricolage), sans-serif;
 }
 
 .body-font {
-  font-family: "SN Pro", sans-serif !important;
+  font-family: var(--font-inter), sans-serif;
 }
 
 @layer base {
