@@ -1,0 +1,223 @@
+@import "tailwindcss";
+
+/* ==============================================
+   BRAND COLORS - EDIT HERE TO CHANGE EVERYWHERE
+   ============================================== */
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+
+  /* Brand Gradient Colors - Change these to update the entire site */
+  --gradient-start: #000000; /* Black */
+  --gradient-middle: #171717; /* Neutral 900 */
+  --gradient-end: #262626; /* Neutral 800 */
+
+  /* Hover variants (slightly lighter/grayer for black theme) */
+  --gradient-start-hover: #171717;
+  --gradient-middle-hover: #262626;
+  --gradient-end-hover: #404040;
+
+  /* Solid brand colors for borders, text, etc */
+  --brand-primary: #171717;
+  --brand-secondary: #262626;
+  --brand-accent: #404040;
+  --brand-light: #f5f5f5;
+  --brand-lighter: #fafafa;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: "SN Pro", sans-serif !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Bricolage Grotesque", sans-serif;
+}
+
+.header-font {
+  font-family: "Bricolage Grotesque", sans-serif;
+}
+
+.body-font {
+  font-family: "SN Pro", sans-serif !important;
+}
+
+@layer base {
+  button,
+  a {
+    cursor: pointer;
+  }
+}
+
+/* Single Brand Gradient - Used Everywhere (references CSS variables) */
+.brand-gradient {
+  background: radial-gradient(
+    circle farthest-corner at 10% 20%,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(38, 38, 38, 1) 90%
+  );
+}
+
+.brand-gradient-hover:hover {
+  background: radial-gradient(
+    circle farthest-corner at 10% 20%,
+    rgba(20, 20, 20, 1) 0%,
+    rgba(60, 60, 60, 1) 90%
+  );
+}
+
+/* Brand Gradient Text */
+.brand-gradient-text {
+  background: radial-gradient(
+    circle farthest-corner at 10% 20%,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(50, 50, 50, 1) 90%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Legacy support - map old classes to new brand gradient */
+.btn-gradient-primary,
+.btn-gradient-vibrant {
+  background: radial-gradient(
+    circle farthest-corner at 10% 20%,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(38, 38, 38, 1) 90%
+  );
+}
+
+.btn-gradient-primary:hover,
+.btn-gradient-vibrant:hover {
+  background: radial-gradient(
+    circle farthest-corner at 10% 20%,
+    rgba(20, 20, 20, 1) 0%,
+    rgba(60, 60, 60, 1) 90%
+  );
+}
+
+/* Scrollable Nav Header */
+.nav-scroll-container {
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.nav-scroll-container::-webkit-scrollbar {
+  display: none;
+}
+
+/* Nav Item Hover Effects */
+.nav-item-colorful {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.nav-item-colorful::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  background: radial-gradient(
+    circle farthest-corner at 10% 20%,
+    color-mix(in srgb, rgba(0, 0, 0, 1) 10%, transparent) 0%,
+    color-mix(in srgb, rgba(40, 40, 40, 1) 10%, transparent) 90%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.nav-item-colorful:hover::before {
+  opacity: 1;
+}
+
+.nav-item-colorful:hover {
+  color: rgba(0, 0, 0, 1);
+}
+
+/* Logo Gradient Text - Using brand gradient */
+.logo-gradient {
+  background: radial-gradient(
+    circle farthest-corner at 10% 20%,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(50, 50, 50, 1) 90%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Sticky Navbar Glass Effect */
+.navbar-glass {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+/* Navbar gradient border */
+.navbar-border {
+  position: relative;
+}
+
+.navbar-border::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    var(--gradient-start),
+    var(--gradient-middle),
+    var(--gradient-end),
+    var(--gradient-middle),
+    var(--gradient-start)
+  );
+  background-size: 200% 100%;
+  animation: gradient-flow 3s linear infinite;
+}
+
+@keyframes gradient-flow {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
+}
+
+/* Footer gradient background */
+.footer-gradient {
+  background: linear-gradient(180deg, #fafafa 0%, var(--brand-light) 100%);
+}
+
+/* Subtle page background */
+.page-gradient {
+  background: linear-gradient(
+    180deg,
+    #ffffff 0%,
+    var(--brand-lighter) 50%,
+    var(--brand-light) 100%
+  );
+}
