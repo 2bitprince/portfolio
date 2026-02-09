@@ -6,10 +6,20 @@ import { ChevronDown } from "lucide-react";
 import MegaMenu from "./MegaMenu";
 
 export const navItems = [
-  { id: "code-snippets", label: "Code Snippets", href: "/code-snippets" },
-  { id: "blogs-by-tags", label: "Blogs By Tags", href: "/blogs-by-tags" },
-  { id: "projects", label: "My Work", href: "/projects" },
-  { id: "blogs", label: "Blogs", href: "/blogs" },
+  // {
+  //   id: "code-snippets",
+  //   isMegaMenu: true,
+  //   label: "Code Snippets",
+  //   href: "/code-snippets",
+  // },
+  // {
+  //   id: "blogs-by-tags",
+  //   isMegaMenu: true,
+  //   label: "Blogs By Tags",
+  //   href: "/blogs-by-tags",
+  // },
+  { id: "projects", isMegaMenu: false, label: "My Work", href: "/projects" },
+  { id: "blogs", isMegaMenu: false, label: "Blogs", href: "/blogs" },
 ];
 
 export const industriesData = [
@@ -96,8 +106,7 @@ export default function NavItems() {
     >
       {navItems.map((item) => {
         const isActive = activeDropdown === item.id;
-        const hasMegaMenu =
-          item.id === "code-snippets" || item.id === "blogs-by-tags";
+        const hasMegaMenu = item.isMegaMenu;
 
         return (
           <div
