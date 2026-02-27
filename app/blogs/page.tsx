@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { getAllBlogs, getAllTags } from "@/src/lib/blogs";
 
+export const dynamic = "force-dynamic";
+
 interface PageProps {
   searchParams: Promise<{ tag?: string }>;
 }

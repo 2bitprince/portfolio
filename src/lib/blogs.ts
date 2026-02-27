@@ -80,7 +80,8 @@ export function getAllBlogs(limit: number = 25): BlogMeta[] {
 
       // Return only metadata, not content
 
-      const { content: _content, ...meta } = blog;
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      const { content, ...meta } = blog;
 
       return meta;
     })
