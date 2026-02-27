@@ -80,7 +80,7 @@ export function getAllBlogs(limit: number = 25): BlogMeta[] {
 
       // Return only metadata, not content
 
-      const { content, ...meta } = blog;
+      const { content: _content, ...meta } = blog;
 
       return meta;
     })

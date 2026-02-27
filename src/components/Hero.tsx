@@ -35,7 +35,7 @@ export default function Hero() {
             </div>
 
             <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight mb-6 text-zinc-100 leading-tight">
-              Hi, I'm Prince Patel.
+              Hi, I am Prince Patel.
             </h1>
 
             <p className="text-lg md:text-xl text-zinc-400 max-w-2xl mb-8 leading-relaxed font-light">

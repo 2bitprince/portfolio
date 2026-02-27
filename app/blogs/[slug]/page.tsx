@@ -60,7 +60,7 @@ export default async function BlogPostPage({ params }: PageProps) {
       },
     },
     components: {
-      pre: Pre as any,
+      pre: Pre as any, // eslint-disable-line
     },
   });
 
