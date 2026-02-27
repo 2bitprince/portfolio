@@ -1,0 +1,61 @@
+---
+title: "A dummy blog post to test all components"
+date: "2026-02-27"
+description: "This is a dummy blog post to test all components of the blog section."
+readTime: "2 min read"
+tags: ["Next.js", "MDX", "React"]
+---
+
+# Introduction
+
+Welcome to my very first MDX blog post. I've just set up a full markdown pipeline using **Next.js**, **next-mdx-remote**, and Let's see some rich formatting!
+
+# Titles
+
+## Titles
+
+### Titles
+
+#### Titles
+
+##### Titles
+
+###### Titles
+
+## Code Block Example
+
+Here is a quick snippet demonstrating syntax highlighting with a copy button.
+
+```tsx
+"use client";
+
+import { useState } from "react";
+
+export function Counter() {
+  const [count, setCount] = useState(0);
+
+  return (
+    <button onClick={() => setCount((c) => c + 1)}>
+      Clicked {count} times
+    </button>
+  );
+}
+```
+
+And here is some standard `inline code` styling to make things jump out.
+
+> **Note**: I'm really excited to start writing more content here!
+
+### Getting Deeper
+
+You can also include standard markdown elements like:
+
+- Unordered Lists
+- **Bold text** or _Italic text_
+- [Links](https://nextjs.org)
+
+1. First Item
+2. Second Item
+3. Third Item
+
+Thanks for checking out the setup!

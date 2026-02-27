@@ -22,7 +22,7 @@ export const navItems = [
   { id: "blogs", isMegaMenu: false, label: "Blogs", href: "/blogs" },
 ];
 
-export const industriesData = [
+export const megamenu1 = [
   {
     title: "Quick Starters",
     items: [
@@ -55,9 +55,9 @@ export const industriesData = [
   },
 ];
 
-export const solutionsData = [
+export const megamenu2 = [
   {
-    title: "Full Stack Development",
+    title: "Full Stack",
     items: [
       {
         title: "ASP.NET Core",
@@ -67,7 +67,7 @@ export const solutionsData = [
     ],
   },
   {
-    title: "Mobile App Development",
+    title: "Mobile App ",
     items: [
       {
         title: "Flutter",
@@ -118,8 +118,8 @@ export default function NavItems() {
               href={item.href || "#"}
               className={`flex items-center gap-2 text-sm font-medium px-4 py-2 rounded-full transition-all duration-200 group ${
                 isActive
-                  ? "bg-gray-100 text-gray-900"
-                  : "text-gray-600 hover:text-gray-900 hover:bg-gray-50"
+                  ? "bg-zinc-800/50 text-zinc-100"
+                  : "text-zinc-400 hover:text-zinc-100 hover:bg-zinc-900"
               }`}
             >
               <span>{item.label}</span>
@@ -134,9 +134,7 @@ export default function NavItems() {
             {isActive && hasMegaMenu && (
               <div className="absolute top-full left-1/2 -translate-x-1/2 pt-4 z-50">
                 <MegaMenu
-                  data={
-                    item.id === "code-snippets" ? industriesData : solutionsData
-                  }
+                  data={item.id === "code-snippets" ? megamenu1 : megamenu2}
                 />
               </div>
             )}

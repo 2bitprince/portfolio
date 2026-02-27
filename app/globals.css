@@ -4,25 +4,25 @@
    BRAND COLORS - EDIT HERE TO CHANGE EVERYWHERE
    ============================================== */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #18181b; /* zinc-900 */
+  --foreground: #fafafa; /* zinc-50 */
 
   /* Brand Gradient Colors - Change these to update the entire site */
-  --gradient-start: #000000; /* Black */
-  --gradient-middle: #171717; /* Neutral 900 */
-  --gradient-end: #262626; /* Neutral 800 */
+  --gradient-start: #f5f3ff; /* purple-50 */
+  --gradient-middle: #c4b5fd; /* purple-300 */
+  --gradient-end: #a855f7; /* purple-500 */
 
-  /* Hover variants (slightly lighter/grayer for black theme) */
-  --gradient-start-hover: #171717;
-  --gradient-middle-hover: #262626;
-  --gradient-end-hover: #404040;
+  /* Hover variants */
+  --gradient-start-hover: #ffffff;
+  --gradient-middle-hover: #ddd6fe; /* purple-200 */
+  --gradient-end-hover: #c084fc; /* purple-400 */
 
   /* Solid brand colors for borders, text, etc */
-  --brand-primary: #171717;
-  --brand-secondary: #262626;
-  --brand-accent: #404040;
-  --brand-light: #f5f5f5;
-  --brand-lighter: #fafafa;
+  --brand-primary: #a855f7; /* purple-500 */
+  --brand-secondary: #c084fc; /* purple-400 */
+  --brand-accent: #d8b4fe; /* purple-300 */
+  --brand-light: #18181b; /* zinc-900 */
+  --brand-lighter: #27272a; /* zinc-800 */
 }
 
 @theme inline {
@@ -30,16 +30,15 @@
   --color-foreground: var(--foreground);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background-color: var(--background);
+  background-image: radial-gradient(
+    rgba(255, 255, 255, 0.08) 1px,
+    transparent 1px
+  );
+  background-size: 24px 24px;
+  background-position: -1px -1px;
+  color: var(--foreground) !important;
   font-family: var(--font-inter), sans-serif;
 }
 
@@ -71,16 +70,17 @@ h6 {
 .brand-gradient {
   background: radial-gradient(
     circle farthest-corner at 10% 20%,
-    rgba(0, 0, 0, 1) 0%,
-    rgba(38, 38, 38, 1) 90%
+    rgba(168, 85, 247, 1) 0%,
+    /* purple-500 */ rgba(126, 34, 206, 1) 90% /* purple-700 */
   );
+  color: #ffffff; /* white text against purple gradient */
 }
 
 .brand-gradient-hover:hover {
   background: radial-gradient(
     circle farthest-corner at 10% 20%,
-    rgba(20, 20, 20, 1) 0%,
-    rgba(60, 60, 60, 1) 90%
+    rgba(192, 132, 252, 1) 0%,
+    /* purple-400 */ rgba(168, 85, 247, 1) 90% /* purple-500 */
   );
 }
 
@@ -88,8 +88,8 @@ h6 {
 .brand-gradient-text {
   background: radial-gradient(
     circle farthest-corner at 10% 20%,
-    rgba(0, 0, 0, 1) 0%,
-    rgba(50, 50, 50, 1) 90%
+    rgba(192, 132, 252, 1) 0%,
+    rgba(168, 85, 247, 1) 90%
   );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -101,8 +101,8 @@ h6 {
 .btn-gradient-vibrant {
   background: radial-gradient(
     circle farthest-corner at 10% 20%,
-    rgba(0, 0, 0, 1) 0%,
-    rgba(38, 38, 38, 1) 90%
+    rgba(250, 250, 250, 1) 0%,
+    rgba(161, 161, 170, 1) 90%
   );
 }
 
@@ -110,8 +110,8 @@ h6 {
 .btn-gradient-vibrant:hover {
   background: radial-gradient(
     circle farthest-corner at 10% 20%,
-    rgba(20, 20, 20, 1) 0%,
-    rgba(60, 60, 60, 1) 90%
+    rgba(255, 255, 255, 1) 0%,
+    rgba(212, 212, 216, 1) 90%
   );
 }
 
@@ -139,8 +139,8 @@ h6 {
   border-radius: 9999px;
   background: radial-gradient(
     circle farthest-corner at 10% 20%,
-    color-mix(in srgb, rgba(0, 0, 0, 1) 10%, transparent) 0%,
-    color-mix(in srgb, rgba(40, 40, 40, 1) 10%, transparent) 90%
+    color-mix(in srgb, rgba(168, 85, 247, 1) 10%, transparent) 0%,
+    color-mix(in srgb, rgba(126, 34, 206, 1) 10%, transparent) 90%
   );
   opacity: 0;
   transition: opacity 0.3s ease;
@@ -151,15 +151,15 @@ h6 {
 }
 
 .nav-item-colorful:hover {
-  color: rgba(0, 0, 0, 1);
+  color: rgba(250, 250, 250, 1);
 }
 
 /* Logo Gradient Text - Using brand gradient */
 .logo-gradient {
   background: radial-gradient(
     circle farthest-corner at 10% 20%,
-    rgba(0, 0, 0, 1) 0%,
-    rgba(50, 50, 50, 1) 90%
+    rgba(192, 132, 252, 1) 0%,
+    rgba(168, 85, 247, 1) 90%
   );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -168,10 +168,10 @@ h6 {
 
 /* Sticky Navbar Glass Effect */
 .navbar-glass {
-  background: rgba(255, 255, 255, 0.92);
+  background: rgba(24, 24, 27, 0.85); /* zinc-900 with opacity */
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
 }
 
 /* Navbar gradient border */
@@ -209,15 +209,239 @@ h6 {
 
 /* Footer gradient background */
 .footer-gradient {
-  background: linear-gradient(180deg, #fafafa 0%, var(--brand-light) 100%);
+  background: linear-gradient(180deg, #18181b 0%, var(--background) 100%);
 }
 
 /* Subtle page background */
 .page-gradient {
   background: linear-gradient(
     180deg,
-    #ffffff 0%,
+    var(--background) 0%,
     var(--brand-lighter) 50%,
-    var(--brand-light) 100%
+    var(--background) 100%
   );
+}
+
+/* ===== Blog Content — Readable, modern typography (Dark Mode Optimized) ===== */
+
+.blog-content {
+  font-size: 1.125rem; /* 18px — optimal for on-screen reading */
+  line-height: 1.8;
+  color: #a1a1aa; /* zinc-400 */
+  max-width: 68ch; /* ideal measure for readability */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* --- Headings --- */
+.blog-content h1,
+.blog-content h2,
+.blog-content h3,
+.blog-content h4,
+.blog-content h5,
+.blog-content h6 {
+  font-family: var(--font-bricolage), sans-serif;
+  font-weight: 800;
+  color: #a0a0a0; /* zinc-50 */
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+}
+
+.blog-content h1 {
+  font-size: 2.25rem;
+  margin-top: 3rem;
+  margin-bottom: 1.25rem;
+}
+
+.blog-content h2 {
+  font-size: 1.75rem;
+  margin-top: 2.75rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid #27272a; /* zinc-800 */
+}
+
+.blog-content h3 {
+  font-size: 1.375rem;
+  margin-top: 2.25rem;
+  margin-bottom: 0.75rem;
+}
+
+.blog-content h4 {
+  font-size: 1.125rem;
+  margin-top: 1.75rem;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+
+/* --- Paragraphs & body text --- */
+.blog-content p {
+  margin-bottom: 1.5rem;
+}
+
+.blog-content strong {
+  font-weight: 700;
+  color: #ebebeb; /* zinc-50 */
+}
+
+/* --- Links --- */
+.blog-content a {
+  color: #a855f7; /* purple-500 */
+  text-decoration: underline;
+  text-decoration-color: rgba(168, 85, 247, 0.3);
+  text-underline-offset: 3px;
+  transition: all 0.2s ease;
+}
+
+.blog-content a:hover {
+  color: #c084fc; /* purple-400 */
+  text-decoration-color: #c084fc;
+}
+
+/* --- Lists --- */
+.blog-content ul,
+.blog-content ol {
+  margin-bottom: 1.5rem;
+  padding-left: 1.75rem;
+}
+
+.blog-content ul {
+  list-style-type: disc;
+}
+
+.blog-content ol {
+  list-style-type: decimal;
+}
+
+.blog-content li {
+  margin-bottom: 0.5rem;
+  padding-left: 0.25rem;
+}
+
+.blog-content li::marker {
+  color: #71717a; /* zinc-500 */
+}
+
+/* --- Blockquotes --- */
+.blog-content blockquote {
+  border-left: 4px solid #a855f7;
+  background: linear-gradient(to right, rgba(168, 85, 247, 0.05), transparent);
+  padding: 0.8rem 1.2rem;
+  margin: 2rem 0;
+  border-radius: 0 0.75rem 0.75rem 0;
+  color: #d4d4d8; /* zinc-300 */
+  font-style: italic;
+}
+
+/* --- Code (inline) --- */
+.blog-content code {
+  font-family: inherit;
+  font-size: 0.9em;
+  background-color: #27272a; /* zinc-800 */
+  padding: 0.2em 0.4em;
+  border-radius: 0.375rem;
+  color: #c084fc; /* purple-400 */
+  border: 1px solid #3f3f46; /* zinc-700 */
+  white-space: nowrap;
+}
+
+/* --- Code blocks (pre) --- */
+.blog-content pre {
+  /* margin: 2.5rem 0; */
+  /* border-radius: 1rem; */
+  padding: 0; /* Handled by Pre component usually, but keeping as fallback */
+  overflow-x: auto;
+  /* background-color: #09090b !important; neutral-950 */
+  /* border: 1px solid #27272a; zinc-800 */
+  font-size: 0.9rem;
+  line-height: 1.7;
+  font-family: var(--font-kode-mono);
+  font-weight: 500;
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+}
+
+.blog-content pre code {
+  background-color: transparent;
+  padding: 1.25rem 1.5rem;
+  border: none;
+  color: inherit;
+  font-size: inherit;
+  white-space: pre;
+  display: block;
+}
+
+/* --- Images --- */
+.blog-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 1rem;
+  margin: 3rem auto;
+  display: block;
+  border: 1px solid #27272a;
+  box-shadow: 0 20px 40px -20px rgba(0, 0, 0, 0.5);
+}
+
+/* --- Tables --- */
+.blog-content table {
+  width: 100%;
+  margin: 2.5rem 0;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+  overflow-x: auto;
+  display: block;
+  border: 1px solid #27272a;
+  border-radius: 0.75rem;
+}
+
+.blog-content thead {
+  background-color: #18181b;
+  border-bottom: 2px solid #27272a;
+}
+
+.blog-content th {
+  padding: 1rem;
+  font-weight: 700;
+  text-align: left;
+  color: #fafafa;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.blog-content td {
+  padding: 1rem;
+  border-bottom: 1px solid #27272a;
+  color: #a1a1aa;
+}
+
+.blog-content tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* --- Horizontal rules --- */
+.blog-content hr {
+  border: none;
+  height: 1px;
+  background: linear-gradient(to right, transparent, #27272a, transparent);
+  margin: 4rem 0;
+}
+
+/* --- Keyboard shortcuts --- */
+.blog-content kbd {
+  display: inline-block;
+  font-size: 0.8em;
+  padding: 0.15em 0.5em;
+  border: 1px solid #3f3f46;
+  border-bottom-width: 3px;
+  border-radius: 0.375rem;
+  background: #18181b;
+  color: #fafafa;
+}
+
+/* --- Highlighted / marked text --- */
+.blog-content mark {
+  background: rgba(168, 85, 247, 0.15);
+  padding: 0.1em 0.25em;
+  border-radius: 0.2em;
+  color: #d8b4fe;
 }

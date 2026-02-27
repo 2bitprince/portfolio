@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
-import { Bricolage_Grotesque, Inter } from "next/font/google";
+import { Bricolage_Grotesque, Inter, Kode_Mono } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+import Navbar from "@/src/components/Navbar";
+import Footer from "@/src/components/Footer";
+import SmoothScroll from "@/src/components/SmoothScroll";
 
 const bricolageGrotesque = Bricolage_Grotesque({
   subsets: ["latin"],
@@ -12,6 +13,11 @@ const bricolageGrotesque = Bricolage_Grotesque({
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
+});
+
+const kodeMono = Kode_Mono({
+  subsets: ["latin"],
+  variable: "--font-kode-mono",
 });
 
 export const metadata: Metadata = {
@@ -26,13 +32,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="dark">
       <body
-        className={`${bricolageGrotesque.variable} ${inter.variable} antialiased`}
+        className={`${bricolageGrotesque.variable} ${inter.variable} ${kodeMono.variable} antialiased`}
       >
-        <Navbar />
-        {children}
-        <Footer />
+        <SmoothScroll>
+          <Navbar />
+          {children}
+          <Footer />
+        </SmoothScroll>
       </body>
     </html>
   );

@@ -1,11 +1,17 @@
-import Hero from "@/components/Hero";
-import LanguageFrameworks from "@/components/LanguageFramewords";
+import Hero from "@/src/components/Hero";
+import Skills from "@/src/components/Skills";
+import Experience from "@/src/components/Experience";
+import Education from "@/src/components/Education";
+import Projects from "@/src/components/Projects";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center gap-24 pb-12 bg-white w-full">
+    <main className="flex min-h-screen flex-col items-center gap-4 pb-12 w-full">
       <Hero />
-      <LanguageFrameworks />
+      <Skills />
+      <Experience />
+      <Education />
+      <Projects />
     </main>
   );
 }
