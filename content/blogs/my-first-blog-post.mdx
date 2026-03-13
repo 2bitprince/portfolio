@@ -1,9 +1,9 @@
 ---
-title: "A dummy blog post to test all components"
-date: "2026-02-27"
-description: "This is a dummy blog post to test all components of the blog section."
-readTime: "2 min read"
-tags: ["Next.js", "MDX", "React"]
+title: 'A dummy blog post to test all components'
+date: '2026-02-27'
+description: 'This is a dummy blog post to test all components of the blog section.'
+readTime: '2 min read'
+tags: ['Next.js', 'MDX', 'React']
 ---
 
 # Introduction
@@ -27,18 +27,14 @@ Welcome to my very first MDX blog post. I've just set up a full markdown pipelin
 Here is a quick snippet demonstrating syntax highlighting with a copy button.
 
 ```tsx
-"use client";
+'use client';
 
-import { useState } from "react";
+import { useState } from 'react';
 
 export function Counter() {
-  const [count, setCount] = useState(0);
+    const [count, setCount] = useState(0);
 
-  return (
-    <button onClick={() => setCount((c) => c + 1)}>
-      Clicked {count} times
-    </button>
-  );
+    return <button onClick={() => setCount((c) => c + 1)}>Clicked {count} times</button>;
 }
 ```
 
