@@ -6,6 +6,7 @@ import { Menu } from 'lucide-react';
 import NavItems from './NavItems';
 import ActionButtons from './ActionButtons';
 import MobileMenu from './MobileMenu';
+import ThemeToggle from './ThemeToggle';
 
 export default function Navbar() {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -37,16 +38,20 @@ export default function Navbar() {
                         <NavItems />
                     </div>
 
-                    <div className='hidden flex-shrink-0 md:block'>
+                    <div className='hidden flex-shrink-0 items-center gap-3 md:flex'>
+                        <ThemeToggle />
                         <ActionButtons />
                     </div>
 
-                    <button
-                        className='brand-gradient -mr-2 rounded-xl p-2.5 text-zinc-950 shadow-md transition-all duration-300 hover:scale-105 hover:shadow-lg md:hidden'
-                        onClick={() => setIsMobileMenuOpen(true)}
-                    >
-                        <Menu className='h-5 w-5' />
-                    </button>
+                    <div className='flex items-center gap-3 md:hidden'>
+                        <ThemeToggle />
+                        <button
+                            className='brand-gradient -mr-2 rounded-xl p-2.5 text-zinc-950 shadow-md transition-all duration-300 hover:scale-105 hover:shadow-lg'
+                            onClick={() => setIsMobileMenuOpen(true)}
+                        >
+                            <Menu className='h-5 w-5' />
+                        </button>
+                    </div>
                 </div>
             </header>
 

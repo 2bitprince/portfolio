@@ -27,11 +27,13 @@ export default function BlogList({ allBlogs, allTags }: BlogListProps) {
             <div className='mb-10 flex flex-wrap gap-2'>
                 <Link
                     href='/blogs'
-                    className={`rounded-full border px-4 py-1.5 text-sm font-medium transition-all duration-200 ${
-                        !selectedTag
-                            ? 'border-zinc-100 bg-zinc-100 text-zinc-900'
-                            : 'border-zinc-800 bg-transparent text-zinc-400 hover:border-zinc-700 hover:text-zinc-200'
-                    }`}
+                    className='rounded-full px-4 py-1.5 text-sm font-medium transition-all duration-200'
+                    style={{
+                        borderWidth: '1px',
+                        borderColor: !selectedTag ? 'var(--blog-active-tag-border)' : 'var(--border)',
+                        backgroundColor: !selectedTag ? 'var(--blog-active-tag-bg)' : 'transparent',
+                        color: !selectedTag ? 'var(--blog-active-tag-text)' : 'var(--text-tertiary)',
+                    }}
                 >
                     All
                 </Link>
@@ -39,11 +41,22 @@ export default function BlogList({ allBlogs, allTags }: BlogListProps) {
                     <Link
                         key={tag.id}
                         href={`/blogs?tag=${tag.id}`}
-                        className={`rounded-full border px-4 py-1.5 text-sm font-medium transition-all duration-200 ${
-                            selectedTag === tag.id
-                                ? 'border-zinc-100 bg-zinc-100 text-zinc-900'
-                                : 'border-zinc-800 bg-transparent text-zinc-400 hover:border-zinc-700 hover:text-zinc-200'
-                        }`}
+                        className='rounded-full px-4 py-1.5 text-sm font-medium transition-all duration-200'
+                        style={{
+                            borderWidth: '1px',
+                            borderColor:
+                                selectedTag === tag.id
+                                    ? 'var(--blog-active-tag-border)'
+                                    : 'var(--border)',
+                            backgroundColor:
+                                selectedTag === tag.id
+                                    ? 'var(--blog-active-tag-bg)'
+                                    : 'transparent',
+                            color:
+                                selectedTag === tag.id
+                                    ? 'var(--blog-active-tag-text)'
+                                    : 'var(--text-tertiary)',
+                        }}
                     >
                         {tag.name}
                     </Link>
@@ -55,30 +68,58 @@ export default function BlogList({ allBlogs, allTags }: BlogListProps) {
                     <Link
                         key={blog.slug}
                         href={`/blogs/${blog.slug}`}
-                        className='group relative flex flex-col rounded-xl border border-zinc-800 bg-zinc-900/50 p-6 transition-all duration-300 hover:border-zinc-700 hover:shadow-2xl hover:shadow-black/50'
+                        className='group relative flex flex-col rounded-xl p-6 transition-all duration-300 hover:shadow-2xl'
+                        style={{
+                            borderWidth: '1px',
+                            borderColor: 'var(--border)',
+                            backgroundColor: 'var(--surface-card)',
+                        }}
+                        onMouseEnter={(e) => {
+                            e.currentTarget.style.borderColor = 'var(--border-hover)';
+                        }}
+                        onMouseLeave={(e) => {
+                            e.currentTarget.style.borderColor = 'var(--border)';
+                        }}
                     >
                         {/* Tags */}
                         <div className='mb-4 flex flex-wrap items-center gap-2'>
                             {blog.tags.map((tag) => (
                                 <span
                                     key={tag.id}
-                                    className='rounded-full bg-zinc-800 px-2.5 py-0.5 text-xs font-medium text-zinc-400'
+                                    className='rounded-full px-2.5 py-0.5 text-xs font-medium'
+                                    style={{
+                                        backgroundColor: 'var(--blog-tag-bg)',
+                                        color: 'var(--text-tertiary)',
+                                    }}
                                 >
                                     {tag.name}
                                 </span>
                             ))}
                         </div>
 
-                        <h2 className='mb-2 text-lg leading-snug font-bold text-zinc-100 transition-colors duration-200 group-hover:text-purple-500'>
+                        <h2
+                            className='mb-2 text-lg leading-snug font-bold transition-colors duration-200 group-hover:text-purple-500'
+                            style={{ color: 'var(--text-hero-heading)' }}
+                        >
                             {blog.title}
                         </h2>
 
-                        <p className='mb-4 line-clamp-3 text-sm leading-relaxed text-zinc-400'>
+                        <p
+                            className='mb-4 line-clamp-3 text-sm leading-relaxed'
+                            style={{ color: 'var(--text-tertiary)' }}
+                        >
                             {blog.description}
                         </p>
 
-                        <div className='mt-auto flex items-center justify-between border-t border-zinc-800 pt-4'>
-                            <time dateTime={blog.createdAt} className='text-xs text-zinc-500'>
+                        <div
+                            className='mt-auto flex items-center justify-between pt-4'
+                            style={{ borderTop: '1px solid var(--border)' }}
+                        >
+                            <time
+                                dateTime={blog.createdAt}
+                                className='text-xs'
+                                style={{ color: 'var(--text-muted)' }}
+                            >
                                 {new Date(blog.createdAt).toLocaleDateString('en-US', {
                                     month: 'short',
                                     day: 'numeric',
@@ -95,7 +136,7 @@ export default function BlogList({ allBlogs, allTags }: BlogListProps) {
 
             {blogs.length === 0 && (
                 <div className='py-20 text-center'>
-                    <p className='text-lg text-zinc-400 dark:text-zinc-500'>
+                    <p className='text-lg' style={{ color: 'var(--text-muted)' }}>
                         No posts found{selectedTag ? ` for "${selectedTag}"` : ''}.
                     </p>
                 </div>

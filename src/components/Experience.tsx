@@ -30,20 +30,64 @@ export default function Experience() {
     return (
         <section className='relative z-10 mx-auto w-full max-w-6xl px-6 py-10'>
             <div className='mb-8 flex items-center gap-3'>
-                <div className='rounded-lg border border-zinc-800 bg-zinc-900 p-2'>
-                    <Briefcase className='h-5 w-5 text-zinc-400' />
+                <div
+                    className='rounded-lg p-2'
+                    style={{
+                        borderWidth: '1px',
+                        borderColor: 'var(--border)',
+                        backgroundColor: 'var(--surface)',
+                    }}
+                >
+                    <Briefcase className='h-5 w-5' style={{ color: 'var(--icon-color)' }} />
                 </div>
-                <h2 className='text-3xl font-bold tracking-tight text-zinc-100'>Experience</h2>
+                <h2
+                    className='text-3xl font-bold tracking-tight'
+                    style={{ color: 'var(--text-hero-heading)' }}
+                >
+                    Experience
+                </h2>
             </div>
 
-            <div className='relative ml-4 space-y-16 border-l border-zinc-800 pb-4 md:ml-6'>
+            <div
+                className='relative ml-4 space-y-16 pb-4 md:ml-6'
+                style={{ borderLeft: '1px solid var(--timeline-border)' }}
+            >
                 {experiences.map((exp, idx) => (
                     <div key={idx} className='group relative pl-8 md:pl-10'>
-                        <div className='absolute top-2 -left-1.5 h-3 w-3 rounded-full border-2 border-zinc-950 bg-purple-500/20 transition-colors group-hover:bg-purple-500'></div>
+                        <div
+                            className='absolute top-2 -left-1.5 h-3 w-3 rounded-full transition-colors'
+                            style={{
+                                borderWidth: '2px',
+                                borderColor: 'var(--timeline-dot-border)',
+                                backgroundColor: 'var(--timeline-dot-bg)',
+                            }}
+                            onMouseEnter={(e) => {
+                                const parent = e.currentTarget.closest('.group');
+                                if (parent) {
+                                    e.currentTarget.style.backgroundColor = 'var(--timeline-dot-hover)';
+                                }
+                            }}
+                            onMouseLeave={(e) => {
+                                e.currentTarget.style.backgroundColor = 'var(--timeline-dot-bg)';
+                            }}
+                        ></div>
 
                         <div className='mb-2 flex flex-col gap-2 md:flex-row md:items-baseline md:justify-between'>
-                            <h3 className='text-xl font-bold text-zinc-200'>{exp.role}</h3>
-                            <span className='w-fit rounded-full border border-zinc-800 bg-zinc-900 px-3 py-1 text-sm font-medium text-zinc-500'>
+                            <h3
+                                className='text-xl font-bold'
+                                style={{ color: 'var(--text-heading)' }}
+                            >
+                                {exp.role}
+                            </h3>
+                            <span
+                                className='w-fit rounded-full px-3 py-1 text-sm font-medium'
+                                style={{
+                                    borderWidth: '1px',
+                                    borderColor: 'var(--duration-badge-border)',
+                                    backgroundColor: 'var(--duration-badge-bg)',
+                                    color: 'var(--text-muted)',
+                                }}
+                            >
                                 {exp.duration}
                             </span>
                         </div>
@@ -52,7 +96,10 @@ export default function Experience() {
                             {exp.company}
                         </div>
 
-                        <p className='max-w-3xl leading-relaxed font-light text-zinc-400'>
+                        <p
+                            className='max-w-3xl leading-relaxed font-light'
+                            style={{ color: 'var(--text-tertiary)' }}
+                        >
                             {exp.description}
                         </p>
                     </div>

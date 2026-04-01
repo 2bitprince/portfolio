@@ -6,27 +6,27 @@ export default function Skills() {
     const categories = [
         {
             title: 'Languages',
-            icon: <Code2 className='h-5 w-5 text-zinc-400' />,
+            icon: <Code2 className='h-5 w-5' style={{ color: 'var(--icon-color)' }} />,
             skills: ['C#', 'TypeScript', 'Python', 'Dart', 'JavaScript', 'SQL'],
         },
         {
             title: 'Backend Frameworks',
-            icon: <Server className='h-5 w-5 text-zinc-400' />,
+            icon: <Server className='h-5 w-5' style={{ color: 'var(--icon-color)' }} />,
             skills: ['.NET Core', 'Node.js', 'Express', 'NestJS', 'FastAPI'],
         },
         {
             title: 'Databases',
-            icon: <Database className='h-5 w-5 text-zinc-400' />,
+            icon: <Database className='h-5 w-5' style={{ color: 'var(--icon-color)' }} />,
             skills: ['PostgreSQL', 'MongoDB', 'Redis', 'MySQL', 'Vector DBs'],
         },
         {
             title: 'Frontend & Mobile',
-            icon: <Layout className='h-5 w-5 text-zinc-400' />,
+            icon: <Layout className='h-5 w-5' style={{ color: 'var(--icon-color)' }} />,
             skills: ['Flutter', 'React', 'Next.js', 'Tailwind CSS'],
         },
         {
             title: 'Tools & DevOps',
-            icon: <Wrench className='h-5 w-5 text-zinc-400' />,
+            icon: <Wrench className='h-5 w-5' style={{ color: 'var(--icon-color)' }} />,
             skills: ['Docker', 'Git', 'Linux', 'AWS', 'CI/CD'],
         },
     ];
@@ -34,8 +34,11 @@ export default function Skills() {
     return (
         <section className='relative z-10 mx-auto w-full max-w-6xl px-6'>
             <div className='mb-8'>
-                <h2 className='text-3xl font-bold tracking-tight text-zinc-100'>
-                    Tools & <span className='text-zinc-500'>Technologies</span>
+                <h2
+                    className='text-3xl font-bold tracking-tight'
+                    style={{ color: 'var(--text-hero-heading)' }}
+                >
+                    Tools & <span style={{ color: 'var(--text-muted)' }}>Technologies</span>
                 </h2>
             </div>
 
@@ -43,11 +46,30 @@ export default function Skills() {
                 {categories.map((category, idx) => (
                     <div
                         key={idx}
-                        className='flex cursor-default break-inside-avoid flex-col gap-4 rounded-2xl border border-zinc-800 bg-zinc-900/40 p-6 shadow-sm backdrop-blur-sm transition-colors hover:border-zinc-700'
+                        className='flex cursor-default break-inside-avoid flex-col gap-4 rounded-2xl p-6 shadow-sm backdrop-blur-sm transition-colors'
+                        style={{
+                            borderWidth: '1px',
+                            borderColor: 'var(--border)',
+                            backgroundColor: 'var(--surface-elevated)',
+                        }}
+                        onMouseEnter={(e) => {
+                            e.currentTarget.style.borderColor = 'var(--border-hover)';
+                        }}
+                        onMouseLeave={(e) => {
+                            e.currentTarget.style.borderColor = 'var(--border)';
+                        }}
                     >
                         <div className='mb-2 flex items-center gap-3'>
-                            <div className='rounded-lg bg-zinc-800/50 p-2'>{category.icon}</div>
-                            <h3 className='text-xl font-semibold text-zinc-200'>
+                            <div
+                                className='rounded-lg p-2'
+                                style={{ backgroundColor: 'var(--icon-container-bg)' }}
+                            >
+                                {category.icon}
+                            </div>
+                            <h3
+                                className='text-xl font-semibold'
+                                style={{ color: 'var(--text-heading)' }}
+                            >
                                 {category.title}
                             </h3>
                         </div>
@@ -55,7 +77,19 @@ export default function Skills() {
                             {category.skills.map((skill) => (
                                 <span
                                     key={skill}
-                                    className='rounded-md border border-zinc-700/50 bg-zinc-800/80 px-3 py-1.5 text-sm font-medium text-zinc-300 transition-colors hover:bg-zinc-700'
+                                    className='rounded-md px-3 py-1.5 text-sm font-medium transition-colors'
+                                    style={{
+                                        borderWidth: '1px',
+                                        borderColor: 'var(--tag-border)',
+                                        backgroundColor: 'var(--tag-bg)',
+                                        color: 'var(--tag-text)',
+                                    }}
+                                    onMouseEnter={(e) => {
+                                        e.currentTarget.style.backgroundColor = 'var(--tag-hover-bg)';
+                                    }}
+                                    onMouseLeave={(e) => {
+                                        e.currentTarget.style.backgroundColor = 'var(--tag-bg)';
+                                    }}
                                 >
                                     {skill}
                                 </span>

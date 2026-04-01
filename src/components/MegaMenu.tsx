@@ -17,10 +17,20 @@ interface MegaMenuProps {
 
 export default function MegaMenu({ data }: MegaMenuProps) {
     return (
-        <div className='grid w-[800px] cursor-default grid-cols-3 gap-8 rounded-xl border border-zinc-800 bg-zinc-900 p-6 text-left shadow-lg'>
+        <div
+            className='grid w-[800px] cursor-default grid-cols-3 gap-8 rounded-xl p-6 text-left shadow-lg'
+            style={{
+                borderWidth: '1px',
+                borderColor: 'var(--border)',
+                backgroundColor: 'var(--megamenu-bg)',
+            }}
+        >
             {data.map((column, idx) => (
                 <div key={idx}>
-                    <h3 className='mb-4 text-xs font-semibold tracking-wider text-zinc-500 uppercase'>
+                    <h3
+                        className='mb-4 text-xs font-semibold tracking-wider uppercase'
+                        style={{ color: 'var(--text-muted)' }}
+                    >
                         {column.title}
                     </h3>
                     <div className='space-y-4'>
@@ -28,12 +38,27 @@ export default function MegaMenu({ data }: MegaMenuProps) {
                             <Link
                                 key={itemIdx}
                                 href={item.href}
-                                className='group -mx-2 block rounded-lg p-2 hover:bg-zinc-800'
+                                className='group -mx-2 block rounded-lg p-2'
+                                style={{ transition: 'background-color 0.2s' }}
+                                onMouseEnter={(e) => {
+                                    e.currentTarget.style.backgroundColor = 'var(--megamenu-hover)';
+                                }}
+                                onMouseLeave={(e) => {
+                                    e.currentTarget.style.backgroundColor = 'transparent';
+                                }}
                             >
-                                <div className='font-semibold text-zinc-100 group-hover:text-zinc-50'>
+                                <div
+                                    className='font-semibold'
+                                    style={{ color: 'var(--text-hero-heading)' }}
+                                >
                                     {item.title}
                                 </div>
-                                <div className='text-sm text-zinc-500'>{item.description}</div>
+                                <div
+                                    className='text-sm'
+                                    style={{ color: 'var(--text-muted)' }}
+                                >
+                                    {item.description}
+                                </div>
                             </Link>
                         ))}
                     </div>

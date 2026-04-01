@@ -27,7 +27,13 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
 
     return (
         <div className='page-gradient fixed inset-0 z-50 overflow-y-auto md:hidden'>
-            <div className='sticky top-0 z-10 flex items-center justify-between border-b border-zinc-800/50 bg-zinc-900/80 p-4 backdrop-blur-sm'>
+            <div
+                className='sticky top-0 z-10 flex items-center justify-between p-4 backdrop-blur-sm'
+                style={{
+                    borderBottom: '1px solid var(--border-subtle)',
+                    backgroundColor: 'var(--mobile-menu-header-bg)',
+                }}
+            >
                 <div className='flex items-center gap-2.5'>
                     <span className='logo-gradient header-font text-xl font-bold tracking-tight'>
                         2bitprince
@@ -35,7 +41,11 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                 </div>
                 <button
                     onClick={onClose}
-                    className='-mr-2 cursor-pointer rounded-xl bg-zinc-800/50 p-2.5 text-zinc-400 shadow-sm transition-colors hover:bg-zinc-800 hover:text-zinc-50'
+                    className='-mr-2 cursor-pointer rounded-xl p-2.5 shadow-sm transition-colors'
+                    style={{
+                        backgroundColor: 'var(--icon-container-bg)',
+                        color: 'var(--text-tertiary)',
+                    }}
                 >
                     <X className='h-5 w-5' />
                 </button>
@@ -50,25 +60,39 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                         return (
                             <div
                                 key={item.id}
-                                className={`rounded-xl border transition-all duration-300 ${
-                                    isActive
-                                        ? 'border-zinc-800 bg-zinc-900 shadow-md'
-                                        : 'border-zinc-800 bg-zinc-900/60 hover:bg-zinc-900/50'
-                                }`}
+                                className='rounded-xl transition-all duration-300'
+                                style={{
+                                    borderWidth: '1px',
+                                    borderColor: isActive
+                                        ? 'var(--mobile-menu-accordion-border)'
+                                        : 'var(--border)',
+                                    backgroundColor: isActive
+                                        ? 'var(--mobile-menu-accordion-active-bg)'
+                                        : 'var(--mobile-menu-item-bg)',
+                                    boxShadow: isActive ? '0 4px 6px -1px rgba(0,0,0,0.1)' : 'none',
+                                }}
                             >
                                 <button
                                     onClick={() => toggleAccordion(item.id)}
                                     className='flex w-full items-center justify-between p-4'
                                 >
                                     <div className='flex items-center gap-3'>
-                                        <span className='font-semibold text-zinc-100'>
+                                        <span
+                                            className='font-semibold'
+                                            style={{ color: 'var(--text-hero-heading)' }}
+                                        >
                                             {item.label}
                                         </span>
                                     </div>
                                     <ChevronDown
-                                        className={`h-5 w-5 text-gray-400 transition-transform duration-300 ${
-                                            isActive ? 'rotate-180 text-zinc-100' : ''
+                                        className={`h-5 w-5 transition-transform duration-300 ${
+                                            isActive ? 'rotate-180' : ''
                                         }`}
+                                        style={{
+                                            color: isActive
+                                                ? 'var(--text-hero-heading)'
+                                                : 'var(--text-tertiary)',
+                                        }}
                                     />
                                 </button>
 
@@ -83,7 +107,13 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                                     <div className='space-y-6 px-4 pt-2 pb-4'>
                                         {subMenuData.map((section, idx) => (
                                             <div key={idx} className='space-y-3'>
-                                                <h4 className='border-l-2 border-zinc-700 pl-2 text-xs font-semibold tracking-wider text-zinc-500 uppercase'>
+                                                <h4
+                                                    className='pl-2 text-xs font-semibold tracking-wider uppercase'
+                                                    style={{
+                                                        borderLeft: '2px solid var(--border-hover)',
+                                                        color: 'var(--text-muted)',
+                                                    }}
+                                                >
                                                     {section.title}
                                                 </h4>
                                                 <div className='grid gap-2'>
@@ -92,14 +122,37 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                                                             key={subIdx}
                                                             href={subItem.href}
                                                             onClick={onClose}
-                                                            className='group flex items-start gap-3 rounded-lg p-2 transition-colors hover:bg-zinc-900'
+                                                            className='group flex items-start gap-3 rounded-lg p-2 transition-colors'
+                                                            onMouseEnter={(e) => {
+                                                                e.currentTarget.style.backgroundColor =
+                                                                    'var(--surface)';
+                                                            }}
+                                                            onMouseLeave={(e) => {
+                                                                e.currentTarget.style.backgroundColor =
+                                                                    'transparent';
+                                                            }}
                                                         >
-                                                            <ChevronRight className='mt-0.5 h-4 w-4 text-zinc-400 transition-colors group-hover:text-zinc-100' />
+                                                            <ChevronRight
+                                                                className='mt-0.5 h-4 w-4 transition-colors'
+                                                                style={{
+                                                                    color: 'var(--text-tertiary)',
+                                                                }}
+                                                            />
                                                             <div>
-                                                                <div className='text-sm font-medium text-zinc-300 transition-colors group-hover:text-zinc-100'>
+                                                                <div
+                                                                    className='text-sm font-medium transition-colors'
+                                                                    style={{
+                                                                        color: 'var(--text-secondary)',
+                                                                    }}
+                                                                >
                                                                     {subItem.title}
                                                                 </div>
-                                                                <div className='mt-0.5 text-xs leading-snug text-zinc-500'>
+                                                                <div
+                                                                    className='mt-0.5 text-xs leading-snug'
+                                                                    style={{
+                                                                        color: 'var(--text-muted)',
+                                                                    }}
+                                                                >
                                                                     {subItem.description}
                                                                 </div>
                                                             </div>
@@ -119,19 +172,37 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                             key={item.id}
                             href={item.href || '#'}
                             onClick={onClose}
-                            className='flex items-center gap-3 rounded-xl border border-zinc-800/50 bg-zinc-900/60 p-4 shadow-sm backdrop-blur-sm transition-colors hover:bg-zinc-900/50'
+                            className='flex items-center gap-3 rounded-xl p-4 shadow-sm backdrop-blur-sm transition-colors'
+                            style={{
+                                borderWidth: '1px',
+                                borderColor: 'var(--border-subtle)',
+                                backgroundColor: 'var(--mobile-menu-item-bg)',
+                            }}
                         >
-                            <span className='font-semibold text-zinc-100'>{item.label}</span>
+                            <span
+                                className='font-semibold'
+                                style={{ color: 'var(--text-hero-heading)' }}
+                            >
+                                {item.label}
+                            </span>
                         </Link>
                     );
                 })}
 
                 {/* Mobile Actions */}
-                <div className='mt-6 flex flex-col gap-3 border-t border-zinc-800/50 pt-6'>
+                <div
+                    className='mt-6 flex flex-col gap-3 pt-6'
+                    style={{ borderTop: '1px solid var(--border-subtle)' }}
+                >
                     <Link
                         href='#'
                         onClick={onClose}
-                        className='flex w-full items-center justify-center gap-2 rounded-full border-2 border-zinc-700 py-3.5 text-center font-medium text-zinc-100 transition-colors hover:bg-zinc-900'
+                        className='flex w-full items-center justify-center gap-2 rounded-full py-3.5 text-center font-medium transition-colors'
+                        style={{
+                            borderWidth: '2px',
+                            borderColor: 'var(--border-hover)',
+                            color: 'var(--text-hero-heading)',
+                        }}
                     >
                         <Smartphone className='h-4 w-4' />
                         Get App

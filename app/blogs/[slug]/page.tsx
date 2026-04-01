@@ -99,15 +99,27 @@ export default async function BlogPostPage({ params }: PageProps) {
                                         ))}
                                     </div>
                                 )}
-                                <h1 className='mb-5 text-3xl leading-[1.15] font-extrabold tracking-tight text-zinc-50 md:text-4xl lg:text-[2.75rem]'>
+                                <h1
+                                    className='mb-5 text-3xl leading-[1.15] font-extrabold tracking-tight md:text-4xl lg:text-[2.75rem]'
+                                    style={{ color: 'var(--text-primary)' }}
+                                >
                                     {blog.title}
                                 </h1>
 
-                                <p className='mb-6 text-lg leading-relaxed text-zinc-400'>
+                                <p
+                                    className='mb-6 text-lg leading-relaxed'
+                                    style={{ color: 'var(--text-tertiary)' }}
+                                >
                                     {blog.description}
                                 </p>
 
-                                <div className='flex flex-wrap items-center gap-3 border-b border-zinc-800 pb-8 text-sm text-zinc-500'>
+                                <div
+                                    className='flex flex-wrap items-center gap-3 pb-8 text-sm'
+                                    style={{
+                                        borderBottom: '1px solid var(--border)',
+                                        color: 'var(--text-muted)',
+                                    }}
+                                >
                                     <time
                                         dateTime={blog.createdAt}
                                         className='flex items-center gap-1.5'
@@ -129,7 +141,9 @@ export default async function BlogPostPage({ params }: PageProps) {
                                     </time>
                                     {updatedDate && (
                                         <>
-                                            <span className='text-zinc-700'>·</span>
+                                            <span style={{ color: 'var(--border-hover)' }}>
+                                                ·
+                                            </span>
                                             <time
                                                 dateTime={blog.updatedAt}
                                                 className='flex items-center gap-1.5'
@@ -156,7 +170,10 @@ export default async function BlogPostPage({ params }: PageProps) {
 
                             <div className='blog-content'>{content}</div>
 
-                            <div className='mt-16 border-t border-zinc-800 pt-8'>
+                            <div
+                                className='mt-16 pt-8'
+                                style={{ borderTop: '1px solid var(--border)' }}
+                            >
                                 <Link
                                     href='/blogs'
                                     className='group inline-flex items-center gap-1.5 text-sm font-medium text-purple-500 transition-colors hover:text-purple-400'

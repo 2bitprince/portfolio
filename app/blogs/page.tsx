@@ -17,16 +17,26 @@ export default async function BlogsPage() {
         <div className='min-h-screen'>
             <main className='mx-auto max-w-6xl px-6 py-20'>
                 <div className='mb-12'>
-                    <h1 className='mb-3 text-4xl font-extrabold tracking-tight text-zinc-100 md:text-5xl'>
+                    <h1
+                        className='mb-3 text-4xl font-extrabold tracking-tight md:text-5xl'
+                        style={{ color: 'var(--text-hero-heading)' }}
+                    >
                         Blog
                     </h1>
-                    <p className='max-w-xl text-lg text-zinc-400'>
+                    <p
+                        className='max-w-xl text-lg'
+                        style={{ color: 'var(--text-tertiary)' }}
+                    >
                         Insights, tutorials, and stories about development, design, and everything
                         in between.
                     </p>
                 </div>
 
-                <Suspense fallback={<div className='text-zinc-400'>Loading blogs...</div>}>
+                <Suspense
+                    fallback={
+                        <div style={{ color: 'var(--text-tertiary)' }}>Loading blogs...</div>
+                    }
+                >
                     <BlogList allBlogs={allBlogs} allTags={allTags} />
                 </Suspense>
             </main>

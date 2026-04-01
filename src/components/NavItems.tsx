@@ -116,11 +116,23 @@ export default function NavItems() {
                     >
                         <Link
                             href={item.href || '#'}
-                            className={`group flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium transition-all duration-200 ${
-                                isActive
-                                    ? 'bg-zinc-800/50 text-zinc-100'
-                                    : 'text-zinc-400 hover:bg-zinc-900 hover:text-zinc-100'
-                            }`}
+                            className='group flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium transition-all duration-200'
+                            style={{
+                                backgroundColor: isActive ? 'var(--nav-item-active-bg)' : 'transparent',
+                                color: isActive ? 'var(--text-primary)' : 'var(--text-tertiary)',
+                            }}
+                            onMouseEnter={(e) => {
+                                if (!isActive) {
+                                    e.currentTarget.style.backgroundColor = 'var(--nav-item-hover-bg)';
+                                    e.currentTarget.style.color = 'var(--text-primary)';
+                                }
+                            }}
+                            onMouseLeave={(e) => {
+                                if (!isActive) {
+                                    e.currentTarget.style.backgroundColor = 'transparent';
+                                    e.currentTarget.style.color = 'var(--text-tertiary)';
+                                }
+                            }}
                         >
                             <span>{item.label}</span>
                             {hasMegaMenu && (

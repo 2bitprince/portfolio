@@ -19,8 +19,21 @@ export function Pre({ children, ...props }: React.HtmlHTMLAttributes<HTMLPreElem
     };
 
     return (
-        <div className='group relative my-8 overflow-hidden rounded-xl border border-zinc-800 bg-[#0d1117] shadow-2xl backdrop-blur-sm'>
-            <div className='flex items-center justify-between border-b border-zinc-800 bg-[#161b22] px-4 py-3'>
+        <div
+            className='group relative my-8 overflow-hidden rounded-xl shadow-2xl backdrop-blur-sm'
+            style={{
+                borderWidth: '1px',
+                borderColor: 'var(--border)',
+                backgroundColor: 'var(--code-block-bg)',
+            }}
+        >
+            <div
+                className='flex items-center justify-between px-4 py-3'
+                style={{
+                    borderBottom: '1px solid var(--border)',
+                    backgroundColor: 'var(--code-block-header)',
+                }}
+            >
                 <div className='flex gap-2'>
                     <div className='h-3 w-3 rounded-full border border-purple-500/20 bg-purple-500/80'></div>
                     <div className='h-3 w-3 rounded-full border border-yellow-500/20 bg-yellow-500/80'></div>
