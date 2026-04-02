@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { X, ArrowRight, Smartphone, ChevronDown, ChevronRight } from 'lucide-react';
-import { navItems, megamenu1, megamenu2 } from './NavItems';
+import { navItems, megamenu1, toolsMegaMenu } from './NavItems';
 
 interface MobileMenuProps {
     isOpen: boolean;
@@ -21,7 +21,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
 
     const getSubMenuData = (id: string) => {
         if (id === 'code-snippets') return megamenu1;
-        if (id === 'blogs-by-tags') return megamenu2;
+        if (id === 'tools') return toolsMegaMenu;
         return null;
     };
 

@@ -156,7 +156,7 @@ export default function Footer() {
                             </li>
                             <li>
                                 <Link
-                                    href='/privacy-policy'
+                                    href='/uuid-generator'
                                     className='group flex items-center gap-1 text-sm transition-colors hover:text-purple-500'
                                     style={{ color: 'var(--text-tertiary)' }}
                                 >

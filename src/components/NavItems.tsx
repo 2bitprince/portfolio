@@ -12,14 +12,14 @@ export const navItems = [
     //   label: "Code Snippets",
     //   href: "/code-snippets",
     // },
-    // {
-    //   id: "blogs-by-tags",
-    //   isMegaMenu: true,
-    //   label: "Blogs By Tags",
-    //   href: "/blogs-by-tags",
-    // },
     { id: 'projects', isMegaMenu: false, label: 'My Work', href: '/projects' },
     { id: 'blogs', isMegaMenu: false, label: 'Blogs', href: '/blogs' },
+    {
+        id: 'tools',
+        isMegaMenu: true,
+        label: 'Tools',
+        href: '/',
+    },
 ];
 
 export const megamenu1 = [
@@ -55,34 +55,14 @@ export const megamenu1 = [
     },
 ];
 
-export const megamenu2 = [
+export const toolsMegaMenu = [
     {
-        title: 'Full Stack',
+        title: 'Quickies',
         items: [
             {
-                title: 'ASP.NET Core',
-                description: 'Backend Development',
-                href: '#',
-            },
-        ],
-    },
-    {
-        title: 'Mobile App ',
-        items: [
-            {
-                title: 'Flutter',
-                description: 'Cross Platform Development',
-                href: '#',
-            },
-        ],
-    },
-    {
-        title: 'Productivity and tools',
-        items: [
-            {
-                title: 'Cursor',
-                description: 'AI Code Editor',
-                href: '#',
+                title: 'UUID Generator',
+                description: 'Generate UUIDs',
+                href: '/uuid-generator',
             },
         ],
     },
@@ -118,12 +98,15 @@ export default function NavItems() {
                             href={item.href || '#'}
                             className='group flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium transition-all duration-200'
                             style={{
-                                backgroundColor: isActive ? 'var(--nav-item-active-bg)' : 'transparent',
+                                backgroundColor: isActive
+                                    ? 'var(--nav-item-active-bg)'
+                                    : 'transparent',
                                 color: isActive ? 'var(--text-primary)' : 'var(--text-tertiary)',
                             }}
                             onMouseEnter={(e) => {
                                 if (!isActive) {
-                                    e.currentTarget.style.backgroundColor = 'var(--nav-item-hover-bg)';
+                                    e.currentTarget.style.backgroundColor =
+                                        'var(--nav-item-hover-bg)';
                                     e.currentTarget.style.color = 'var(--text-primary)';
                                 }
                             }}
@@ -146,7 +129,7 @@ export default function NavItems() {
                         {isActive && hasMegaMenu && (
                             <div className='absolute top-full left-1/2 z-50 -translate-x-1/2 pt-4'>
                                 <MegaMenu
-                                    data={item.id === 'code-snippets' ? megamenu1 : megamenu2}
+                                    data={item.id === 'code-snippets' ? megamenu1 : toolsMegaMenu}
                                 />
                             </div>
                         )}
