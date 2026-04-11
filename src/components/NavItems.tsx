@@ -64,6 +64,11 @@ export const toolsMegaMenu = [
                 description: 'Generate UUIDs',
                 href: '/uuid-generator',
             },
+            {
+                title: 'N length String Generator',
+                description: 'Generate N length strings',
+                href: '/n-length-string-generator',
+            },
         ],
     },
 ];
